@@ -187,7 +187,11 @@ namespace fs {
 			return 0;
 		}
 
-		return (unsigned long)st.st_ctime;
+#ifdef HAVE_ST_BIRTHTIME
+		return (unsigned long)st.st_birthtim.tv_sec;
+#else
+		return (unsigned long)st.st_ctim.tv_sec;
+#endif
 	}
 
 	unsigned long path::modifiedAt() {
@@ -197,7 +201,7 @@ namespace fs {
 			return 0;
 		}
 
-		return (unsigned long)st.st_mtime;
+		return (unsigned long)st.st_mtim.tv_sec;
 	}
 
 	// Folder functions
