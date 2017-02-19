@@ -188,9 +188,9 @@ namespace fs {
 		}
 
 #ifdef HAVE_ST_BIRTHTIME
-		return (unsigned long)st.st_birthtim.tv_sec;
+		return (unsigned long)st.st_birthtime;
 #else
-		return (unsigned long)st.st_ctim.tv_sec;
+		return (unsigned long)st.st_ctime;
 #endif
 	}
 
@@ -201,7 +201,7 @@ namespace fs {
 			return 0;
 		}
 
-		return (unsigned long)st.st_mtim.tv_sec;
+		return (unsigned long)st.st_mtime;
 	}
 
 	// Folder functions
