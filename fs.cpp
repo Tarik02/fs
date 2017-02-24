@@ -278,10 +278,6 @@ namespace fs {
 
 	// Operators
 	path path::operator /(const std::string &sub) const {
-		if (!is_directory()) {
-			throw "Cannot get path on not a directory.";
-		}
-
 		return path{itemPath + PathDelim + itemName + PathDelim + sub};
 	}
 
