@@ -50,6 +50,8 @@ namespace fs {
 
 		std::vector<path> list() const;
 
+		std::string relative(const path &child) const;
+
 		// File functions
 		std::string content() const;
 		bool content(const std::string &newContent);

@@ -231,6 +231,17 @@ namespace fs {
 		return files;
 	}
 
+	std::string path::relative(const path &child) const {
+		auto name = full_name(),
+			childName = child.full_name();
+
+		if ((name.length() >= childName.length()) || (childName.substr(0, name.length()) != name)) {
+			return childName;
+		}
+
+		return childName.substr(name.length() + 1);
+	}
+
 	// File functions
 	std::string path::content() const {
 		auto handle = fopen(full_name().c_str(), "rb");
