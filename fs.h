@@ -62,4 +62,6 @@ namespace fs {
 
 	path temp();
 	path relative(const std::string &relative);
+	std::string escape(const path &path);
+	std::string escape(const std::string &path);
 }

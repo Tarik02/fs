@@ -322,4 +322,31 @@ namespace fs {
 
 		return path{simplify(std::string(working_dir) + "/" + relative)};
 	}
+
+	std::string escape(const path &path) {
+		return escape(path.full_name());
+	}
+
+	std::string escape(const std::string &path) {
+		std::string result;
+		result.reserve(path.size());
+
+		for (auto c : path) {
+			switch (c) {
+			case '\\':
+				result += "\\\\";
+				break;
+			case '\'':
+				result += "\\\'";
+				break;
+			case '\"':
+				result += "\\\"";
+				break;
+			default:
+				result += c;
+			}
+		}
+
+		return result;
+	}
 }
