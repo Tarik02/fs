@@ -58,6 +58,9 @@ namespace fs {
 
 		// Operators
 		path operator /(const std::string &sub) const;
+
+		// To use as map key
+		bool operator <(const path &operand) const;
 	};
 
 	path temp();

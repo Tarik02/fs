@@ -281,6 +281,11 @@ namespace fs {
 		return path{itemPath + PathDelim + itemName + PathDelim + sub};
 	}
 
+	// To use as map key
+	bool path::operator <(const path &operand) const {
+		return full_name() < operand.full_name();
+	}
+
 	path temp() {
 		std::string templ;
 
