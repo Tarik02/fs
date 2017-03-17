@@ -6,7 +6,7 @@
 #include <cstdlib>
 #include <stdio.h>
 #include <linux/limits.h>
-#include <zconf.h>
+#include <unistd.h>
 #include <sstream>
 #include <algorithm>
 
