@@ -39,7 +39,7 @@ namespace fs {
 		bool is_temponary() const;
 
 		path parent() const;
-		void parent(const path &target);
+		path &parent(const path &target);
 
 		// Stat functions
 		unsigned long createdAt();
@@ -55,6 +55,14 @@ namespace fs {
 		// File functions
 		std::string content() const;
 		bool content(const std::string &newContent);
+
+		path &open(std::ifstream &stream);
+		path &open(std::ofstream &stream);
+		path &open(std::fstream &stream);
+
+		const path &open(std::ifstream &stream) const;
+		const path &open(std::ofstream &stream) const;
+		const path &open(std::fstream &stream) const;
 
 		// Operators
 		path operator /(const std::string &sub) const;

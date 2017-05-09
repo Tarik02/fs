@@ -9,6 +9,7 @@
 #include <unistd.h>
 #include <sstream>
 #include <algorithm>
+#include <fstream>
 
 namespace fs {
 	char path::PathDelim = '/';
@@ -163,7 +164,7 @@ namespace fs {
 		return path{dir()};
 	}
 
-	void path::parent(const path &target) {
+	path &path::parent(const path &target) {
 		if (is_directory()) {
 			if (target.is_directory()) {
 				rename(full_name().c_str(), (target.full_name() + PathDelim + name()).c_str());
@@ -177,6 +178,8 @@ namespace fs {
 				rename(full_name().c_str(), target.full_name().c_str());
 			}
 		}
+
+		return *this;
 	}
 
 	// Stat functions
@@ -274,6 +277,36 @@ namespace fs {
 		}
 
 		return false;
+	}
+
+	path &path::open(std::ifstream &stream) {
+		stream.open(full_name());
+		return *this;
+	}
+
+	path &path::open(std::ofstream &stream) {
+		stream.open(full_name());
+		return *this;
+	}
+
+	path &path::open(std::fstream &stream) {
+		stream.open(full_name());
+		return *this;
+	}
+
+	const path &path::open(std::ifstream &stream) const {
+		stream.open(full_name());
+		return *this;
+	}
+
+	const path &path::open(std::ofstream &stream) const {
+		stream.open(full_name());
+		return *this;
+	}
+
+	const path &path::open(std::fstream &stream) const {
+		stream.open(full_name());
+		return *this;
 	}
 
 	// Operators
